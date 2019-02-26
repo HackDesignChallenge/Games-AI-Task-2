@@ -1,4 +1,4 @@
-# Games-AI-Task2
+# Games-AI-Task-2
 Procedurally Generated Game
 
 Create a procedurally generated game (game environment, sounds, NPC behaviours included).
