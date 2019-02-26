@@ -5,6 +5,7 @@ Create a procedurally generated game (game environment, sounds, NPC behaviours i
 
 When submitting your work please include the following info about the game:
 - Short Description
+- Game Screenshot
 - Controls
 - Credits
 - Software & version used
