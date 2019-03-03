@@ -11,6 +11,7 @@ public class GM : MonoBehaviour
     public static bool success = true;
     public float waitToLoad = 0;
     public static int[] modulSixFibonacciFractal = ModuleSixFibonacci();
+    public Dictionary<int, Transform> randomGameAssets;
 
     public static float zVelAdj = 1;
 
@@ -23,10 +24,26 @@ public class GM : MonoBehaviour
 
     void Start()
     {
-        float i;
-        for (i = 0; i < 100; i+=4)
+        randomGameAssets = RandomGameAssets();
+        for (int i = 0; i < 100; i+=4)
         {
             Instantiate(fragment, new Vector3(0, 0, i), fragment.rotation);
+        }
+
+        System.Random fractalMultiplier = new System.Random();
+        System.Random obj = new System.Random();
+        for (int j = -1; j < 2; j++)
+        {
+            int placement = 4;
+            int fraction = fractalMultiplier.Next(21);
+            float multiplier = 1.0f + (fraction / 10.0f);
+
+            for (int i = 0; i < modulSixFibonacciFractal.Length; i++)
+            {
+                Transform objectToPlace = randomGameAssets[obj.Next(4)];
+                Instantiate(objectToPlace, new Vector3(j, 1, (int)((placement += modulSixFibonacciFractal[i]) * multiplier)) , objectToPlace.rotation);
+                placement++;
+            }
         }
     }
 
@@ -67,5 +84,13 @@ public class GM : MonoBehaviour
         }
         return values;
     }
-
+    private Dictionary<int, Transform> RandomGameAssets()
+    {
+        Dictionary<int, Transform> gameAssets = new Dictionary<int, Transform>();
+        gameAssets.Add(0, hole);
+        gameAssets.Add(1, coinObj);
+        gameAssets.Add(2, obsctacleObj);
+        gameAssets.Add(3, powerUpObjc);
+        return gameAssets;
+    }
 }

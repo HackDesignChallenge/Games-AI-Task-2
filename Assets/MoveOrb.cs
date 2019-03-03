@@ -42,10 +42,6 @@ public class MoveOrb : MonoBehaviour
             Instantiate(boomObj, transform.position, boomObj.rotation);
             GM.success = false;
         }
-        if(otherObj.gameObject.name.Contains("Capsule"))
-        {
-            Destroy(otherObj.gameObject);
-        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -66,6 +62,10 @@ public class MoveOrb : MonoBehaviour
         {
             Destroy(other.gameObject);
             GM.coinTotal += 1;
+        }
+        if (other.gameObject.name.Contains("Capsule"))
+        {
+            Destroy(other.gameObject);
         }
     }
 
