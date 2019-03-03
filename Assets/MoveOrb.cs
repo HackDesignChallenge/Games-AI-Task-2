@@ -19,28 +19,19 @@ public class MoveOrb : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = new Vector3(horizVel, GM.vertVel, 4);
 
-        if((Input.GetKeyDown (moveL)) && (laneNum>1) && !controlLocked)
+        if((Input.GetKeyDown(moveL)) && (laneNum>1) && !controlLocked)
         {
-            horizVel = -2;
-            StartCoroutine(stopSlide());
+            horizVel = -4;
+            StartCoroutine(StopSlide());
             laneNum -= 1;
             controlLocked = true;
         }
         if ((Input.GetKeyDown(moveR)) && (laneNum < 3) && !controlLocked)
         {
-            horizVel = 2;
-            StartCoroutine(stopSlide());
+            horizVel = 4;
+            StartCoroutine(StopSlide());
             laneNum += 1;
             controlLocked = true;
-        }
-    }
-    void OnCollisionEnter(Collision otherObj)
-    {
-        if (otherObj.gameObject.tag.Contains("Missile"))
-        {
-            Destroy(gameObject);
-            Instantiate(boomObj, transform.position, boomObj.rotation);
-            GM.success = false;
         }
     }
 
@@ -67,12 +58,32 @@ public class MoveOrb : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag.Contains("Wall"))
+        {
+            HitBadObjectAndLoseHealth(3, other);
+        }
+        if (other.gameObject.tag.Contains("Hole"))
+        {
+            HitBadObjectAndLoseHealth(1, other);
+        }
     }
 
-    IEnumerator stopSlide()
+    private void HitBadObjectAndLoseHealth(int healthToLose, Collider badObject)
     {
-        yield return new WaitForSeconds(.5f);
-            horizVel = 0;
+        Destroy(badObject.gameObject);
+        GM.health -= healthToLose;
+        if (GM.health == 0)
+        {
+            Destroy(gameObject);
+            Instantiate(boomObj, transform.position, boomObj.rotation);
+            GM.success = false;
+        }
+    }
+
+    IEnumerator StopSlide()
+    {
+        yield return new WaitForSeconds(.25f);
+        horizVel = 0;
         controlLocked = false;
     }
 }
