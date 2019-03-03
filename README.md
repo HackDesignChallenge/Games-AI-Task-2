@@ -1,6 +1,6 @@
 # Games-AI-Task-2
 Procedurally Generated Game
-
+http://faculty.evansville.edu/ck6/integer/fractals.html
 Create a procedurally generated game (game environment, sounds, NPC behaviours included).
 
 When submitting your work please include the following info about the game:
