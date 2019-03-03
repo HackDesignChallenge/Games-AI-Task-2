@@ -10,11 +10,12 @@ public class GM : MonoBehaviour
     public static float timeTotal = 0;
     public static bool success = true;
     public float waitToLoad = 0;
+    public static int[] modulSixFibonacciFractal = ModuleSixFibonacci();
 
     public static float zVelAdj = 1;
 
-    public Transform bbNoObstArea;
-    public Transform bbMidPitArea;
+    public Transform fragment;
+    public Transform hole;
     public Transform coinObj;
     public Transform obsctacleObj;
     public Transform powerUpObjc;
@@ -23,12 +24,10 @@ public class GM : MonoBehaviour
     void Start()
     {
         float i;
-        for (i = 34.89f; i < 100; i+=8)
+        for (i = 0; i < 100; i+=4)
         {
-            Instantiate(bbNoObstArea, new Vector3(0, 3.13f, i), bbNoObstArea.rotation);
-            Instantiate(bbMidPitArea, new Vector3(0, 3.13f, i+4), bbMidPitArea.rotation);
+            Instantiate(fragment, new Vector3(0, 0, i), fragment.rotation);
         }
-        Instantiate(exit, new Vector3(0, 4.13f, i-3), exit.rotation);
     }
 
     void Update()
@@ -45,4 +44,28 @@ public class GM : MonoBehaviour
             SceneManager.LoadScene("LevelComp");
         }
     }
+
+    private static int[] CalculateFractalValues()
+    {
+        int[] values = new int[24];
+        values[0] = 1;
+        values[1] = 1;
+        for (int i = 2; i < 24; i++)
+        {
+            values[i] = values[i - 1] + values[i - 2];
+        }
+        return values;
+    }
+
+    private static int[] ModuleSixFibonacci()
+    {
+        int[] fibonacciFractal = CalculateFractalValues();
+        int[] values = new int[24];
+        for (int i = 0; i < 24; i++)
+        {
+            values[i] = fibonacciFractal[i] % 6;
+        }
+        return values;
+    }
+
 }
