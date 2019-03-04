@@ -56,7 +56,7 @@ public class GM : MonoBehaviour
         if (player != null && player.position.z > gameObjects.First.Value.Item1)
         {
             InstantiateObjects(gameObjects.Last.Value.Item1 + 100);
-            gameObjects.First.Value.Item2.ForEach(o => Destroy(o));
+            gameObjects.First.Value.Item2.ForEach(o => Destroy(o.gameObject));
         }
         timeTotal += Time.deltaTime;
     }
@@ -75,14 +75,14 @@ public class GM : MonoBehaviour
         System.Random obj = new System.Random();
         for (int j = -1; j < 2; j++)
         {
-            int placement = 4;
+            int placement = 4 + limit - 100;
             int fraction = fractalMultiplier.Next(41);
             float multiplier = 1.0f + (fraction / 10.0f);
 
             for (int i = 0; i < modulSixFibonacciFractal.Length; i++)
             {
                 Transform objectToPlace = randomGameAssets[obj.Next(20)];
-                int nextPlacement = (int)((placement += modulSixFibonacciFractal[i]) * multiplier);
+                int nextPlacement = placement += (int)(modulSixFibonacciFractal[i] * multiplier);
                 if (nextPlacement >= limit)
                 {
                     break;

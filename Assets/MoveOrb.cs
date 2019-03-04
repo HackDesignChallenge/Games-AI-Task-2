@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MoveOrb : MonoBehaviour
 {
+    public AudioSource startEngine;
+    public AudioSource coinPickup;
+    public AudioSource toolsPickup;
+    public AudioSource crash;
+    public AudioSource engineRunning;
 
     public KeyCode moveL;
     public KeyCode moveR;
@@ -14,6 +19,13 @@ public class MoveOrb : MonoBehaviour
     public bool controlLocked = false;
 
     public Transform boomObj;
+
+    void Start()
+    {
+        startEngine.Play(0);
+        engineRunning.PlayDelayed(2);
+    }
+
 
     void Update()
     {
@@ -53,11 +65,13 @@ public class MoveOrb : MonoBehaviour
         {
             Destroy(other.gameObject);
             GM.coinTotal += 1;
+            coinPickup.Play(0);
         }
         if (other.gameObject.name.Contains("Capsule"))
         {
             Destroy(other.gameObject);
             GM.health++;
+            toolsPickup.Play(0);
         }
         if (other.gameObject.tag.Contains("Wall"))
         {
@@ -71,6 +85,7 @@ public class MoveOrb : MonoBehaviour
 
     private void HitBadObjectAndLoseHealth(int healthToLose, Collider badObject)
     {
+        crash.Play(0);
         Destroy(badObject.gameObject);
         GM.health -= healthToLose;
         if (GM.health <= 0)
