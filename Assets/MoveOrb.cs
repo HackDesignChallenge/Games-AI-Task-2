@@ -57,6 +57,7 @@ public class MoveOrb : MonoBehaviour
         if (other.gameObject.name.Contains("Capsule"))
         {
             Destroy(other.gameObject);
+            GM.health++;
         }
         if (other.gameObject.tag.Contains("Wall"))
         {
@@ -72,7 +73,7 @@ public class MoveOrb : MonoBehaviour
     {
         Destroy(badObject.gameObject);
         GM.health -= healthToLose;
-        if (GM.health == 0)
+        if (GM.health <= 0)
         {
             Destroy(gameObject);
             Instantiate(boomObj, transform.position, boomObj.rotation);

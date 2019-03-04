@@ -17,5 +17,8 @@ public class MoveCam : MonoBehaviour
             Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smooth);
             transform.position = smoothPosition;
         }
+
     }
+    
+
 }

@@ -14,12 +14,12 @@ public class GM : MonoBehaviour
     public static int[] modulSixFibonacciFractal = ModuleSixFibonacci();
     public Dictionary<int, Transform> randomGameAssets;
 
-    private LinkedList<Tuple<int, List<GameObject>>> gameObjects;
+    private LinkedList<Tuple<int, List<Transform>>> gameObjects;
 
 
     public static float zVelAdj = 1;
-    public static int health = 5;
-
+    public static int health;
+    public static bool videoPlayed;
 
     public Transform player;
     public Transform fragment;
@@ -31,7 +31,11 @@ public class GM : MonoBehaviour
 
     void Start()
     {
-        gameObjects = new LinkedList<Tuple<int, List<GameObject>>>();
+        health = 5;
+        success = true;
+        timeTotal = 0;
+        waitToLoad = 0;
+        gameObjects = new LinkedList<Tuple<int, List<Transform>>>();
         randomGameAssets = RandomGameAssets();
         InstantiateObjects(100);
         InstantiateObjects(200);
@@ -39,18 +43,25 @@ public class GM : MonoBehaviour
 
     void Update()
     {
-        timeTotal += Time.deltaTime;
-
         if(!success)
         {
             waitToLoad += Time.deltaTime;
         }
 
-        if(waitToLoad > 2)
+        if(waitToLoad > 1)
         {
-            SceneManager.LoadScene("LevelComp");
+            SceneManager.LoadScene("Video");
         }
+
+        if (player != null && player.position.z > gameObjects.First.Value.Item1)
+        {
+            InstantiateObjects(gameObjects.Last.Value.Item1 + 100);
+            gameObjects.First.Value.Item2.ForEach(o => Destroy(o));
+        }
+        timeTotal += Time.deltaTime;
     }
+
+
 
     private void InstantiateObjects(int limit)
     {
@@ -80,7 +91,7 @@ public class GM : MonoBehaviour
                 placement++;
             }
         }
-        gameObjects.
+        gameObjects.AddLast(Tuple.Create(limit, instantiated));
     }
 
     private static int[] CalculateFractalValues()
