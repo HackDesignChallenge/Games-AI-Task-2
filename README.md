@@ -13,7 +13,7 @@ The truck driver’s task is to ship the load of life saving vaccines from point
 
 # Controls:
 
-A,D or ←, →
+A and D
 
 # Software & version:
 
@@ -22,17 +22,17 @@ Unity
 
 # Credits:
 
-Story: 
+Story: Sanya Raeva && Kristina Nunkova
 
 3D Art: Nikoleta Zhecheva 
 
-Animation / Effects: 
+Animation / Effects: Christina Dian && Tsvetelin Pantev
 
-Game Development: 
+Game Development: Christina Dian && Tsvetelin Pantev 
 
-AI implementation: 
+AI implementation: Tsvetelin Pantev and others
 
-Audio: 
+Audio: Mitko && Sammy
 
 # AI notes:
 The game uses fractal numerical sequence as means of procedurial generation of the gameplay. 
