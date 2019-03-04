@@ -36,6 +36,7 @@ public class GM : MonoBehaviour
     public Transform house5;
     public Transform house6;
     public Transform house7;
+    private List<Transform> houses;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class GM : MonoBehaviour
         waitToLoad = 0;
         gameObjects = new LinkedList<Tuple<int, List<Transform>>>();
         randomGameAssets = RandomGameAssets();
+        houses = allHouses();
         InstantiateObjects(100);
         InstantiateObjects(200);
     }
@@ -70,7 +72,7 @@ public class GM : MonoBehaviour
     }
 
 
-
+    
     private void InstantiateObjects(int limit)
     {
         var instantiated = new List<Transform>();
@@ -79,17 +81,16 @@ public class GM : MonoBehaviour
             instantiated.Add(Instantiate(fragment, new Vector3(0, 0, i), fragment.rotation));
         }
 
-        System.Random fractalMultiplier = new System.Random();
-        System.Random obj = new System.Random();
+        System.Random random = new System.Random();
         for (int j = -1; j < 2; j++)
         {
             int placement = 4 + limit - 100;
-            int fraction = fractalMultiplier.Next(41);
+            int fraction = random.Next(41);
             float multiplier = 1.0f + (fraction / 10.0f);
 
             for (int i = 0; i < modulSixFibonacciFractal.Length; i++)
             {
-                Transform objectToPlace = randomGameAssets[obj.Next(20)];
+                Transform objectToPlace = randomGameAssets[random.Next(20)];
                 int nextPlacement = placement += (int)(modulSixFibonacciFractal[i] * multiplier);
                 if (nextPlacement >= limit)
                 {
@@ -99,16 +100,46 @@ public class GM : MonoBehaviour
                 placement++;
             }
         }
-        int housePlacement = 4;
+        int housePlacement = limit - 100;
         for (int i = 0; i < modulSixFibonacciFractal.Length; i++)
         {
-            housePlacement = housePlacement + 2 * modulSixFibonacciFractal[i];
+            housePlacement = housePlacement + modulSixFibonacciFractal[i];
+            if (housePlacement >= limit)
+            {
+                break;
+            }
             Quaternion rotation = new Quaternion();
             rotation.eulerAngles = new Vector3(-90, 90,0);
-            instantiated.Add(Instantiate(house1, new Vector3(2, 0.5f, housePlacement), rotation));
+            instantiated.Add(Instantiate(houses[random.Next(7)], new Vector3(2, 0.5f, housePlacement), rotation));
+
+        }
+        int secondHousePlacement = limit - 100;
+        for (int i = 0; i < modulSixFibonacciFractal.Length; i++)
+        {
+            secondHousePlacement = secondHousePlacement + (int)(1.2 * modulSixFibonacciFractal[i]);
+            if (secondHousePlacement >= limit)
+            {
+                break;
+            }
+            Quaternion rotation = new Quaternion();
+            rotation.eulerAngles = new Vector3(-90, 270, 0);
+            instantiated.Add(Instantiate(houses[random.Next(7)], new Vector3(-2, 0.5f, secondHousePlacement), rotation));
 
         }
         gameObjects.AddLast(Tuple.Create(limit, instantiated));
+    }
+
+    private List<Transform> allHouses()
+    {
+        var houses = new List<Transform>();
+        houses.Add(house1);
+        houses.Add(house2);
+        houses.Add(house3);
+        houses.Add(house4);
+        houses.Add(house5);
+        houses.Add(house6);
+        houses.Add(house7);
+        return houses;
     }
 
     private static int[] CalculateFractalValues()
