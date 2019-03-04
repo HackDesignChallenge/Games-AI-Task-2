@@ -13,13 +13,13 @@ public class effects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name == "Capsule")
+        if (gameObject.name.Contains("Capsule"))
         {
-            transform.Rotate(3, 0, 0);
+            transform.Rotate(0, 3, 0);
         }
-        if (gameObject.name == "Coin")
+        if (gameObject.name.Contains("Coin"))
         {
-            transform.Rotate(3, 0, 0);
+            transform.Rotate(0, 0, 3);
         }
 
     }
