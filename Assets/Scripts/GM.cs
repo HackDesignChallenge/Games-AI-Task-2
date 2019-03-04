@@ -96,7 +96,8 @@ public class GM : MonoBehaviour
                 {
                     break;
                 }
-                instantiated.Add(Instantiate(objectToPlace, new Vector3(j, 1, nextPlacement), objectToPlace.rotation));
+                float y = objectToPlace.gameObject.tag.Contains("Hole") ? 0.5f : 1;
+                instantiated.Add(Instantiate(objectToPlace, new Vector3(j, y, nextPlacement), objectToPlace.rotation));
                 placement++;
             }
         }

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Video : MonoBehaviour
 {
 
-           
     void Update()
     {
         StartCoroutine(loadScene());
@@ -14,7 +13,11 @@ public class Video : MonoBehaviour
 
     IEnumerator loadScene()
     {
+        AudioSource background = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
+        float prevVol = background.volume;
+        background.volume = 0;
         yield return new WaitForSeconds(3);
+        background.volume = prevVol;
         SceneManager.LoadScene("LevelComp");
     }
 }
