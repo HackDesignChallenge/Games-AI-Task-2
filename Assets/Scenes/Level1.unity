@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 9bedbbab7929ef0469102e48b5b480c6, type: 2}
 --- !u!1 &689604091
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +663,7 @@ MonoBehaviour:
   powerUpObjc: {fileID: 7576253563996618820, guid: 80adf5de493312b48a812b02db274c0a,
     type: 3}
   exit: {fileID: 8520796794694888181, guid: de59ccd2b3ec9054ab7a51c732f3837a, type: 3}
+  house: {fileID: 400000, guid: ffdf174a13ac8db4ea343f72b88114f9, type: 3}
 --- !u!4 &1450953360
 Transform:
   m_ObjectHideFlags: 0
