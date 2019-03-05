@@ -581,6 +581,12 @@ MonoBehaviour:
   laneNum: 2
   controlLocked: 0
   boomObj: {fileID: 6311355226703338797, guid: 1d807e05a98eec74292c639bdc0e292f, type: 3}
+--- !u!4 &429640394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: eb036539df8d56b488b6017763adfdf9,
+    type: 3}
+  m_PrefabInstance: {fileID: 429640389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitToLoad: 0
-  player: {fileID: 0}
+  player: {fileID: 429640394}
   fragment: {fileID: 7970081703941232093, guid: c12c05875ae748743aa32dfc6047fe20,
     type: 3}
   hole: {fileID: 5068662038193831124, guid: b752b7336cb340540809b043f61fdb82, type: 3}
