@@ -32,7 +32,7 @@ Game Development: Christina Dian && Tsvetelin Pantev
 
 AI implementation: Tsvetelin Pantev and others
 
-Audio: Mitko && Sammy
+Audio: Dimitur Atanasov && Smilena Tocheva
 
 # AI notes:
 The game uses fractal numerical sequence as means of procedurial generation of the gameplay. 
