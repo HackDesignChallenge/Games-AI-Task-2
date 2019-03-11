@@ -8,10 +8,10 @@ The driver in the truck has one very important task – to get the shipment from
 The truck driver’s task is to ship the load of life saving vaccines from point A to point B unharmed and as fast as possible. The road is full with dangerous obstacles, which need to be overcame. If he doesn’t make it on time people will die. Every time when the truck falls into a hole, hit a wall the truck gets broken. The only way  to fix the truck is by collecting tools. Get the job done and do not sacrifice people’s lives!
 
 # Screenshot:
-![alt text](https://github.com/HackDesignChallenge/Games-AI-Task-2/blob/master/sakri.png "Title screen")
+![alt text](https://github.com/HackDesignChallenge/Games-AI-Task-2/blob/master/Sakri.png "Title screen")
 
 # Build:
-[Task 2 build](https://github.com/HackDesignChallenge/Games-AI-Task-2/blob/master/Task%202/Task%202%20Build.zip)
+[Task 2 build](https://github.com/HackDesignChallenge/Games-AI-Task-2/blob/master/Task%202.zip)
 
 # Controls:
 A and D
