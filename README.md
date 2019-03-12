@@ -38,3 +38,4 @@ The game uses fractal numerical sequence as means of procedurial generation of t
 
 Stranger Things - Your game's ambience is inspired by an 80s pop song
 
+Fractalicious - Your game should predominantly feature the idea of patterns that repeat within themselves as you zoom in or expand the game world.
