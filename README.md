@@ -34,4 +34,7 @@ Audio: Dimitur Atanasov && Smilena Tocheva
 # AI notes:
 The game uses fractal numerical sequence as means of procedurial generation of the gameplay. 
 
+# Diversifiers used:
+
+Stranger Things - Your game's ambience is inspired by an 80s pop song
 
